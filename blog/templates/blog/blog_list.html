@@ -1,17 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Blog - List</title>
-</head>
-<body>
-    {% for blog in blogs %}
+{% extends '_base.html' %}
+
+{% block title %}
+	Blog - List
+{% endblock %}
+
+{% block content %}
+	{% for blog in blogs %}
     	{{ blog.author }}<br>
         {{ blog.title }}<br>
         {{ blog.blog }}<br>
         {{ blog.create_at }}
         <hr>
     {% endfor %}
-    
-</body>
-</html>
+{% endblock %}
+

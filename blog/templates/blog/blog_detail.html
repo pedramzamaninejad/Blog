@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Blog - Detail</title>
-</head>
-<body>
-    <h1>{{ blog.title }}</h1>
+{% extends '_base.html' %}
+
+{% block title %}
+	 Blog - Detail
+{% endblock %}
+
+
+{% block content %}
+	<h1>{{ blog.title }}</h1>
     <p>{{ blog.blog }}</p>
     <h6>
         <span>
             {{ blog.author }} | {{ blog.modified_at }}
         </span>
     </h6>
-</body>
-</html>
+{% endblock %}

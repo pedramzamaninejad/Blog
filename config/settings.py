@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,7 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom User Setting
 AUTH_USER_MODEL = 'account.CustomUser'
+LOGOUT_REDIRECT_URL = 'blog:blog-list'
 
 # Crispy setting
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# jazzmin setting
+JAZZMIN_UI_TWEAKS = {
+    "theme": "journal",
+}
