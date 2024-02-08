@@ -13,6 +13,12 @@ class BlogListView(generic.ListView):
     context_object_name = 'blogs'
 
 
+class BlogDetailView(generic.DetailView):
+    model = Blog
+    template_name = 'blog/blog_detail.html'
+    context_object_name = 'blog'
+
+
 class BlogCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = BlogForm
     template_name = 'blog/blog_create.html'
