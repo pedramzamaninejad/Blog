@@ -16,3 +16,6 @@ class Blog(models.Model):
 
     create_at = models.DateField(auto_now=True)
     modified_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
