@@ -1,4 +1,3 @@
+.idea/
 .venv/
-.idea
-.idea/personal-blog.iml
 db.sqlite3

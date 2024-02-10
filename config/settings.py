@@ -133,7 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom User Setting
 AUTH_USER_MODEL = 'account.CustomUser'
-LOGOUT_REDIRECT_URL = 'blog:blog-list'
+LOGOUT_REDIRECT_URL = 'blog:list'
 
 # Crispy setting
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
