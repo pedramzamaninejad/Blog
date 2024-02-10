@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+
+{% block title %}
+	Blog - Delete
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>Are u sure you want to delete the post?</h2>
+        <input type="submit" class="btn btn-danger" value="IM SURE">
+    </form>
+{% endblock %}

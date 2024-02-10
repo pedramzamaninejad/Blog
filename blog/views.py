@@ -49,6 +49,16 @@ class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
         return super().form_valid(form)
 
 
+class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Blog
+    template_name = 'blog/blog_delete.html'
+    success_url = reverse_lazy('blog:list')
+
+    def test_func(self):
+        blog_user = self.get_object().author
+        return blog_user == self.request.user
+
+
 class CommentCreateView(generic.CreateView):
     model = Comment
     form_class = CommentForm
