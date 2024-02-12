@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import Blog, Comment
@@ -8,13 +9,15 @@ from .forms import BlogForm, CommentForm
 
 
 class BlogListView(generic.ListView):
-    model = Blog
+    # model = BlogListView
+    queryset = Blog.objects.filter(status='Pub').all()
     template_name = 'blog/blog_list.html'
     context_object_name = 'blogs'
 
 
 class BlogDetailView(generic.DetailView):
-    model = Blog
+    # model = Blog
+    queryset = Blog.objects.prefetch_related('comments').all()
     template_name = 'blog/blog_detail.html'
     context_object_name = 'blog'
 
@@ -72,3 +75,14 @@ class CommentCreateView(generic.CreateView):
         obj.blog = blog
         
         return super().form_valid(form)
+
+
+@login_required()
+def personal_blog(request):
+    query = Blog.objects.filter(author_id=request.user.id)
+
+    context = {
+        "blogs": query
+    }
+
+    return render(request, 'blog/blog_list.html', context=context)

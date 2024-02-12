@@ -24,13 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blogs</a>
+                    <a class="nav-link" href="{% url 'blog:list' %}">Blogs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Create Blog</a>
+                    <a class="nav-link" href="{% url 'blog:create' %}">Create Blog</a>
                 </li>
                 <li class="nav-itme">
-                    <a href="#" class="nav-link">Your Blogs</a>
+                    <a href="{% url 'blog:personal' %}" class="nav-link">Your Blogs</a>
                 </li>
             </ul>
             <span class="navbar-test">
