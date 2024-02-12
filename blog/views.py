@@ -9,14 +9,12 @@ from .forms import BlogForm, CommentForm
 
 
 class BlogListView(generic.ListView):
-    # model = BlogListView
     queryset = Blog.objects.filter(status='Pub').all()
     template_name = 'blog/blog_list.html'
     context_object_name = 'blogs'
 
 
 class BlogDetailView(generic.DetailView):
-    # model = Blog
     queryset = Blog.objects.prefetch_related('comments').all()
     template_name = 'blog/blog_detail.html'
     context_object_name = 'blog'
@@ -81,8 +79,4 @@ class CommentCreateView(generic.CreateView):
 def personal_blog(request):
     query = Blog.objects.filter(author_id=request.user.id)
 
-    context = {
-        "blogs": query
-    }
-
-    return render(request, 'blog/blog_list.html', context=context)
+    return render(request, 'blog/blog_list.html', context={"blogs": query})
