@@ -1,16 +1,25 @@
 {% extends '_base.html' %}
 
 {% block title %}
-	Blog - List
+    Blog - List
 {% endblock %}
 
 {% block content %}
-	{% for blog in blogs %}
-    	{{ blog.author }}<br>
-        {{ blog.title }}<br>
-        {{ blog.blog }}<br>
-        {{ blog.create_at }}
-        <hr>
-    {% endfor %}
-{% endblock %}
+    <div class="row">
+        {% for blog in blogs %}
 
+            <div class="col-sm-6 mt-3">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <h6 style="color: #1a3047"> Author: {{ blog.author }}</h6>
+                        <h6 class="card-"></h6>
+                        <p class="card-text">{{ blog.blog|truncatechars:100 }}</p>
+                        <a href="{{ blog.get_absolute_url }}" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% endblock %}

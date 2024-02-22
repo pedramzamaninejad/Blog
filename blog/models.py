@@ -22,7 +22,7 @@ class Blog(models.Model):
 
     def get_absolute_url(self):
         from django.shortcuts import reverse
-        return reverse('blog:blog-detail', args=[self.id])
+        return reverse('blog:detail', kwargs={'pk': self.id})
 
 
 class Comment(models.Model):

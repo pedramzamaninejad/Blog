@@ -63,6 +63,7 @@ class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
 class CommentCreateView(generic.CreateView):
     model = Comment
     form_class = CommentForm
+    success_url = reverse_lazy('blog:list')
 
     def form_valid(self, form):
         obj = form.save(commit=False)
@@ -70,6 +71,7 @@ class CommentCreateView(generic.CreateView):
 
         blog_id = int(self.kwargs['id'])
         blog = get_object_or_404(Blog, blog_id)
+        # blog = Blog.objects.get(id=blog_id)
         obj.blog = blog
         
         return super().form_valid(form)

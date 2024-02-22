@@ -1,16 +1,23 @@
 {% extends '_base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 	 Blog - Detail
 {% endblock %}
 
 
 {% block content %}
-	<h1>{{ blog.title }}</h1>
+	<h1 style="color: #0d2a4a">{{ blog.title }}</h1>
     <p>{{ blog.blog }}</p>
     <h6>
-        <span>
-            {{ blog.author }} | {{ blog.modified_at }}
-        </span>
+    <span style="color: #0a0a0a">
+        {{ blog.author }} | {{ blog.modified_at }}
+    </span>
     </h6>
+    <form action="{% url 'blog:comment' blog.id %}" method="post">
+        {% csrf_token %}
+        {{ comment_form|crispy }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 {% endblock %}
