@@ -70,8 +70,8 @@ class CommentCreateView(generic.CreateView):
         obj.user = self.request.user
 
         blog_id = int(self.kwargs['id'])
-        blog = get_object_or_404(Blog, blog_id)
-        # blog = Blog.objects.get(id=blog_id)
+        # blog = get_object_or_404(Blog, blog_id)
+        blog = Blog.objects.get(id=blog_id)
         obj.blog = blog
         
         return super().form_valid(form)

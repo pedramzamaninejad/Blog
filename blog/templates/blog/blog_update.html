@@ -7,10 +7,12 @@
 {% endblock %}
 
 {% block content %}
-	 <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
+    <div class="d-flex justify-content-center flex-column align-items-center">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
             <button type="submit" class="btn btn-success">Update</button>
-    </form>
+        </form>
+    </div>
 
 {% endblock %}

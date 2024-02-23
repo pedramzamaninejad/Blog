@@ -9,9 +9,11 @@
 
 
 {% block content %}
-	<form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <form method="post" class="w-25 shadow d-flex flex-column align-items-center justify-content-center py-3">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
 {% endblock %}
