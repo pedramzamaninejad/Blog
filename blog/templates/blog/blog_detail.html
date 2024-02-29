@@ -26,12 +26,19 @@
         </div>
         <div class="mt-4">
 
-            <div class="border">
+            <div class="">
                 <h5 style="color: black">Comment section</h5>
                 {% for comment in blog.comments.all %}
                     <p>{{ comment.body }}</p>
                     <span>{{ comment.user }} | {{ comment.star }}</span>
+                    <div class="px-3 border">
+                        {% for reply in comment.reply.all %}
+                            <p>{{ reply.body }}</p>
+                            <span>{{ reply.author }}</span>
+                        {% endfor %}
+                    </div>
                     <hr>
+
                 {% endfor %}
             </div>
             <form action="{% url 'blog:comment' blog.id %}" method="post">
