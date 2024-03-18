@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from ckeditor.fields import RichTextField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Blog(models.Model):
@@ -11,7 +11,7 @@ class Blog(models.Model):
 
     author = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='blogs')
     title = models.CharField(max_length=128)
-    blog = RichTextField()
+    blog = CKEditor5Field('Text', config_name='extends')
 
     status = models.CharField(max_length=3, choices=STATUS, default=STATUS[0][0])
 

@@ -6,10 +6,9 @@ crispy-bootstrap4==2023.1
 cryptography==42.0.2
 defusedxml==0.7.1
 Django==5.0.2
-django-ckeditor==6.7.1
+django-ckeditor-5==0.2.12
 django-crispy-forms==2.1
 django-jazzmin==2.6.0
-django-js-asset==2.2.0
 idna==3.6
 oauthlib==3.2.2
 pillow==10.2.0
