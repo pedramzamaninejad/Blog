@@ -1,16 +1,16 @@
 from django.forms import ModelForm
 from ckeditor.widgets import CKEditorWidget
-
+from django import forms
 from .models import Blog, Comment, CommentReply
 
 
 class BlogForm(ModelForm):
+    blog = forms.CharField(widget=CKEditorWidget())
+
     class Meta:
         model = Blog
         fields = ['title', 'blog', 'status']
-        widgets = {
-            'blog': CKEditorWidget()
-        }
+
 
 class CommentForm(ModelForm):
     class Meta:
