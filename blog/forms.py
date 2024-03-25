@@ -5,12 +5,16 @@ from .models import Blog, Comment, CommentReply
 
 
 class BlogForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["blog"].required = True
+
     class Meta:
         model = Blog
         fields = ['title', 'blog', 'status']
         widgets = {
             'blog': CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"}, config_name="extends"
+                attrs={"class": "django_ckeditor_5", "row": "20"}, config_name="extends"
             )
         }
 
