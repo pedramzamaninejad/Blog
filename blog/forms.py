@@ -5,10 +5,6 @@ from .models import Blog, Comment, CommentReply
 
 
 class BlogForm(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["blog"].required = True
-
     class Meta:
         model = Blog
         fields = ['title', 'blog', 'status']
