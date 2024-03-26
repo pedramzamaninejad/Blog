@@ -4,7 +4,9 @@
 {% load static %}
 
 {% block optional %}
+
     <link rel="stylesheet" href="{% static "css/content-styles.css" %}">
+    {{ form.media }}
 {% endblock %}
 
 {% block title %}
@@ -13,14 +15,10 @@
 
 {% block content %}
 	{% if user.is_authenticated %}
-        <form method="post" class="py-2 px-3 border justify-content-center">
+        <form method="post" class="py-2 px-3 border justify-content-center" action="{% url 'blog:create' %}">
             {% csrf_token %}
-{#            <div>#}
-{#                <lable for="id_title" required>Title *</lable>#}
-{#                <input type="text" id="id_title" name="{{ form.title.name }}">#}
-{#            </div>#}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-success">Create</button>
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
     {% endif %}
 {% endblock content %}
