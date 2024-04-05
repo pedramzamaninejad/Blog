@@ -8,7 +8,7 @@
 {% block content %}
     <h4>logout page</h4>
     <p>Are u sure you want to logout</p>
-    <form method="post">
+    <form method="post" action="{% url 'logout' %}">
         {% csrf_token %}
         <button type="submit" class="btn-sm btn-danger">Logout</button>
     </form>

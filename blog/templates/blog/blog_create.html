@@ -14,11 +14,9 @@
 {% endblock title %}
 
 {% block content %}
-	{% if user.is_authenticated %}
-        <form method="post" class="py-2 px-3 justify-content-center" id="blog-form">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Create</button>
-        </form>
-    {% endif %}
+    <form method="post" class="py-2 px-3 justify-content-center" id="blog-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
 {% endblock content %}
