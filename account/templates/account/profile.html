@@ -1,1 +1,38 @@
-{{ user.id }}
+{% extends '_base.html' %}
+
+{% load blogs %}
+
+{% block title %}
+	Profile Page
+{% endblock %}
+
+{% block content %}
+    <div class="mt-3">
+        <h3 style="color: black">
+            Hello you information are writen below
+        </h3>
+        <ul>
+            <li>username: {{ user.username }}</li>
+            <li>email: {{ user.email }}</li>
+            <li>first name: {{ user.first_name }}</li>
+            <li>last name: {{ user.last_name }}</li>
+            <li>joined date: {{ user.date_joined }}</li>
+        </ul>
+        <hr>
+        <h4 style="color: black">Your blogs</h4>
+        {% if user.blogs.all|length %}
+        	{% for blog in user.blogs.all %}
+        		<a href="{{ blog.get_absolute_url }}"> {{ blog.title }}</a> |
+                    {% if blog.status|is_publish %}
+                        <span style="color: orange">Status</span>: <span style="color: green">Publish</span>
+                    {% else %}
+                        <span style="color: orange">Status</span>: <span style="color: red">Pending</span>
+                    {% endif %}
+                <br>
+        	{% endfor %}
+        {% else %}
+            <p>You don't have any blogs yet. you can write your blogs <a href="{% url 'blog:create' %}">here</a></p>
+        {% endif %} 
+
+    </div>
+{% endblock %}

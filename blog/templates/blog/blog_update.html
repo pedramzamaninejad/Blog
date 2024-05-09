@@ -1,6 +1,13 @@
 {% extends '_base.html' %}
 
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block optional %}
+	<link rel="stylesheet" href="{% static "blog/css/content-styles.css" %}">
+    <link rel="stylesheet" href="{% static "blog/css/blog_create.css" %}">
+    {{ form.media }}
+{% endblock %}
 
 {% block title %}
 	Blog - Update
@@ -8,8 +15,8 @@
 
 {#TODO: changin the look of this page#}
 {% block content %}
-    <div class="d-flex justify-content-center flex-column align-items-center">
-        <form method="post">
+    <div>
+        <form method="post" class="py-2 px-3 justify-content-center">
             {% csrf_token %}
             {{ form|crispy }}
             <button type="submit" class="btn btn-success">Update</button>
